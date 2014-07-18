@@ -13,7 +13,7 @@ class Month
   def month_array
     total_days = leap_year[@month]
     month_array = []
-    total_days.times do |i|
+    (total_days +1).times do |i|
       if i < 10
         var = "0#{i}"
         month_array.push(var)
@@ -57,12 +57,12 @@ class Month
     first_day = Zellers.calculate(@month, @year)
 
     first_day.times do
-      string.insert 0, " "
+      string.insert 0, "  "
     end
 
-    string = string.scan(/.{15}|.+/)
+    string = string.scan(/.{21}|.+/)
 
-    string = string.join("\n ")
+    string = string.join("\n")
     string
   end
 
