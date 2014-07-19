@@ -76,22 +76,22 @@ RSpec.describe Month do
   context "month_array" do
     it "should create an array with all the days of the month" do
       month = Month.new(1, 2009)
-      month.month_array.should == [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
     end
     it "should create an array with all the days of the month" do
       month = Month.new(2, 2008)
-      month.month_array.should == [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29"]
     end
     it "should create an array with all the days of the month" do
       month = Month.new(2, 2007)
-      month.month_array.should == [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
+      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"]
     end
   end
 
   context "print_first_line" do
     it "should print the first line of the calendar" do
       month = Month.new(1, 2024)
-      month.print_first_line.should == " "
+      month.print_first_line.should == "     1  2  3  4  5  6\n  7  8  9 10 11 12 13\n 14 15 16 17 18 19 20\n 21 22 23 24 25 26 27\n 28 29 30 31"
     end
   end
 
