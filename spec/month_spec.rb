@@ -73,26 +73,58 @@ RSpec.describe Month do
     end
   end
 
-  context "month_array" do
-    it "should create an array with all the days of the month" do
-      month = Month.new(1, 2009)
-      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
-    end
-    it "should create an array with all the days of the month" do
-      month = Month.new(2, 2008)
-      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29"]
-    end
-    it "should create an array with all the days of the month" do
-      month = Month.new(2, 2007)
-      month.month_array.should == [" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"]
-    end
-  end
+  # context "month_array" do
+  #   it "should create an array with all the days of the month" do
+  #     month = Month.new(1, 2009)
+  #     month.month_array.should == " 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+  #   end
+  #   it "should create an array with all the days of the month" do
+  #     month = Month.new(2, 2008)
+  #     month.month_array.should == " 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29"
+  #   end
+  #   it "should create an array with all the days of the month" do
+  #     month = Month.new(2, 2007)
+  #     month.month_array.should == " 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28"
+  #   end
+  # end
+  #
+  # context "print_cal_body" do
+  #   it "should print the first line of the calendar" do
+  #     month = Month.new(1, 2024)
+  #     month.print_cal_body.should == "     1  2  3  4  5  6\n  7  8  9 10 11 12 13\n 14 15 16 17 18 19 20\n 21 22 23 24 25 26 27\n 28 29 30 31"
+  #   end
+  # end
 
-  context "print_first_line" do
-    it "should print the first line of the calendar" do
-      month = Month.new(1, 2024)
-      month.print_first_line.should == "     1  2  3  4  5  6\n  7  8  9 10 11 12 13\n 14 15 16 17 18 19 20\n 21 22 23 24 25 26 27\n 28 29 30 31"
+  context "print_a_single_month" do
+    it "should print an entire month" do
+      month = Month.new(7, 2017)
+      expected = <<EOS
+     July 2017
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+EOS
+      month.month_array.should == expected
     end
+
+  it "should print an entire month" do
+    month = Month.new(12, 2013)
+    expected = <<EOS
+   December 2013
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31
+
+EOS
+    month.month_array.should == expected
   end
+end
 
 end #end of tests
