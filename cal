@@ -2,8 +2,8 @@
 
 require_relative 'lib/month'
 
-month = ARGV[0].to_i
-year = ARGV[1].to_i
+m = ARGV[0].to_i
+y = ARGV[1].to_i
 
-month = Month.new(month, year)
-puts month.print_a_single_month
+mon = Month.new(m, y)
+puts mon.month_array

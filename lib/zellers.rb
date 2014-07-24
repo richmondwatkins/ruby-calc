@@ -1,7 +1,6 @@
 class Zellers
 
   def self.calculate(m, y)
-    print m
     if m < 3
       y -= 1
       m += 12

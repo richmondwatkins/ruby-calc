@@ -1,5 +1,8 @@
+require_relative "zellers"
+
 class Month
   include Enumerable
+
   MONTHS = [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)
@@ -14,12 +17,9 @@ class Month
   def month_array
     total_days = leap_year[@month]
     month_arry = []
-    (total_days +1).times do |i|
-      month_arry.push(i)
+    total_days.times do |i|
+      month_arry.push(i+1)
     end
-     month_arry.shift
-    #  month_string = month_array.collect{|i| i.to_s}
-    #  month_string = month_string.join(" ")
 
     month_arry = month_arry.map do |day|
       if day < 10
@@ -31,7 +31,7 @@ class Month
 
     first_day = Zellers.calculate(@month, @year)
 
-    days_of_week = [2, 8, 7, 6, 5, 4, 3]
+    days_of_week = [1, 7, 6, 5, 4, 3, 2]
     first_week = []
 
     until month_arry.length == 42 do
@@ -39,10 +39,9 @@ class Month
     end
 
     days_of_week[first_day].times do |day|
-      day = " #{day}"
+      day = " #{day+1}"
       first_week.push(day)
     end
-    first_week.shift
 
     month_arry = month_arry - first_week
 
@@ -62,19 +61,25 @@ class Month
     week_6 = month_arry[5]
 
 
-    month_arry = "#{week_1.join(" ")}\n#{week_2.join(" ")}\n#{week_3.join(" ")}\n#{week_4.join(" ")}\n#{week_5.join(" ")}\n#{week_6.join(" ")}\n"
+    month_arry = "#{week_1.join(" ")}\n#{week_2.join(" ")}\n#{week_3.join(" ")}\n#{week_4.join(" ")}\n#{week_5.join(" ")}\n#{week_6.join(" ")}\n".rstrip
+    month_arry = "#{month_arry}\n"
 
-    output = header
+
+    output = ""
+    output << header
     output << "\nSu Mo Tu We Th Fr Sa\n"
-    output <<month_arry
-
+    output << month_arry
     output
-
   end
 
+  def test
+    "test"
+    month_array
+  end
 
   def name
     MONTHS[@month]
+
   end
 
   def leap_year
@@ -84,26 +89,6 @@ class Month
       [nil, 31,28,31,30,31,30,31,31,30,31,30,31]
     end
   end
-
-
-
-  def print_cal_body
-    entire_month = month_array
-
-  end
-
-
-  #
-  # def print_a_single_month
-  #   output = header
-  #   output << "\nSu Mo Tu We Th Fr Sa\n"
-  #   output <<print_cal_body
-  #   puts print_cal_body
-  #   puts "**********"
-  #   puts output
-  #   print_cal_body
-  # end
-
 
 
 end
