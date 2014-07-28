@@ -13,6 +13,7 @@ class Month
     switch ? "#{name}".center(20) : "#{name} #{@year}".center(20)
   end
 
+  
   def name
     MONTHS[@month]
   end
@@ -49,4 +50,4 @@ class Month
     end
     output
   end
-end
+end#end of Class
