@@ -1,9 +1,38 @@
 #!/usr/bin/env ruby
 
 require_relative 'lib/month'
+require_relative 'lib/year'
 
-m = ARGV[0].to_i
-y = ARGV[1].to_i
+arg_num_usage = "Please enter the correct number of arguments (1 or 2)\nusage: $ ./cal [mm] yyyy"
+year_range_usage = "Please enter a year within the range 1800-3000 (inclusive)\nusage: $ ./cal [mm] yyyy"
+month_range_usage = "Please enter a year within the range 1-12 (inclusive)\nusage: $ ./cal [mm] yyyy"
 
-mon = Month.new(m, y)
-puts mon.month_array
+if ARGV.size == 0
+  puts arg_num_usage
+  exit
+elsif ARGV.size == 1
+  year = ARGV[0].to_i
+  if year > 3000 || year < 1800
+    puts year_range_usage
+    exit
+  end
+  year = Year.new(year)
+  puts "#{year}"
+elsif ARGV.size == 2
+  month = ARGV[0].to_i
+  year = ARGV[1].to_i
+  if year > 3000 || year < 1800
+    puts year_range_usage
+    exit
+  elsif
+    month < 1 || month > 12
+    puts month_range_usage
+    exit
+  end
+  month = Month.new(month, year)
+  year = Year.new(year)
+  puts month.to_s
+elsif ARGV.size > 2
+  puts arg_num_usage
+  exit
+end

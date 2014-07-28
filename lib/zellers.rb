@@ -1,16 +1,13 @@
 class Zellers
-
-  def self.calculate(m, y)
-    if m < 3
-      y -= 1
-      m += 12
+  def self.calculate(month, year)
+    if month < 3
+      month += 12
+      year -= 1
     end
 
-    k = y % 100
-    j = y / 100
-    q = 1 #looking for the first of the month
-
-    h = (q + ((13*(m+1)/5)) + k + (k/4) + (j/4) + (5*j)) % 7
+    q = 1
+    k = year % 100
+    j = year / 100
+    (q + ((13*(month+1))/5) + k + (k/4).floor + (j/4).floor + (5*j)) % 7
   end
-
 end

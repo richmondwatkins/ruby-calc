@@ -2,36 +2,14 @@ require_relative '../lib/zellers'
 
 RSpec.describe Zellers do
   context ".calculate" do
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(2, 2014)
-
-      z.should == 0
+    it "returns 0 for 7,2017" do
+      0.should == Zellers.calculate(7,2017)
     end
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(11, 2010)
-
-      z.should == 2
+    it "returns 1 for 4,2012" do
+      1.should == Zellers.calculate(4,2012)
     end
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(1, 2024)
-
-      z.should == 2
-    end
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(9, 2024)
-
-      z.should == 1
-    end
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(1, 1800)
-
-      z.should == 4
-    end
-    it "finds the day of the week when given month and year" do
-      z = Zellers.calculate(10, 3000)
-
-      z.should == 4
+    it "returns 4 for 1, 2555" do
+      4.should == Zellers.calculate(1,2555)
     end
   end
-
 end
